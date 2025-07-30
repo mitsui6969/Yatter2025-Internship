@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tutorial</string>
+    <string name="hello_string">hello_string</string>
+    <string name="team_name">チーム4</string>
+</resources>

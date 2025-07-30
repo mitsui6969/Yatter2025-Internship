@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">チュートリアル</string>
+    <string name="hello_string">こんにちは</string>
+    <string name="team_name">チーム4</string>
+</resources>
