@@ -8,4 +8,8 @@
     <string name="password_string">password</string>
     <string name="register_use_to">if you are using it for the first time</string>
     <string name="new_user_registration">user registration</string>
+    <string name="post_string">post</string>
+    <string name="back_string">back</string>
+    <string name="what_now_string">what now?</string>
+    <string name="tweet_string">tweet</string>
 </resources>

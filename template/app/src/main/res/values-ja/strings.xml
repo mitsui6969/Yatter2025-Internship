@@ -8,4 +8,8 @@
     <string name="password_string">パスワード</string>
     <string name="register_use_to">初めてご利用の方は</string>
     <string name="new_user_registration">新規ユーザー登録</string>
+    <string name="post_string">投稿</string>
+    <string name="back_string">戻る</string>
+    <string name="what_now_string">今何してる？</string>
+    <string name="tweet_string">ツイート</string>
 </resources>
