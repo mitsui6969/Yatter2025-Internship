@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.dmm.bootcamp.yatter2025.common.navigation.Destination
 import com.dmm.bootcamp.yatter2025.domain.model.Password
 import com.dmm.bootcamp.yatter2025.domain.model.Username
+import com.dmm.bootcamp.yatter2025.ui.timeline.PublicTimelineDestination
 import com.dmm.bootcamp.yatter2025.usecase.login.LoginUseCase
 import com.dmm.bootcamp.yatter2025.usecase.login.LoginUseCaseResult
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,6 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+
+
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
@@ -46,19 +49,6 @@ class LoginViewModel(
         }
     }
 
-//    // ViewModel内
-//    _destination.value = PublicTimelineDestination()
-//
-//    // Page側
-//    val destination by loginViewModel.destination.collectAsStateWithLifecycle()
-//    val navController = LocalNavController.current
-//    LaunchedEffect(destination)  {
-//        destination?.let {
-//            it.navigate(navController)
-//            loginViewModel.onCompleteNavigation()
-//        }
-//    }
-
     fun onClickLogin() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) } // 1
@@ -72,8 +62,12 @@ class LoginViewModel(
                     ) // 2
             ) {
                 is LoginUseCaseResult.Success -> {
-                    // 3
                     // パブリックタイムライン画面に遷移する処理の追加
+                    _destination.value = PublicTimelineDestination{
+                        popUpTo(LoginDestination().route) {
+                            inclusive = true
+                        }
+                    }
                 }
 
                 is LoginUseCaseResult.Failure -> {
@@ -90,7 +84,9 @@ class LoginViewModel(
         // _destination.value = RegisterUserDestination()
     }
 
-    fun onCompleteNavigation() {}
+    fun onCompleteNavigation() {
+        _destination.value = null
+    }
 
 
 }
